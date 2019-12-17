@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "binding"
+    }
+  },
+  "defaultProject": "binding",
+  "cli": {
+    "packageManager": "yarn"
+  }
 }

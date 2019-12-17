@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'binding';
+  //Component Interaction
+  public superName = "Julio";
+  public message = "";
 }

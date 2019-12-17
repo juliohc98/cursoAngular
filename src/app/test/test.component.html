@@ -1,0 +1,108 @@
+<!-- Interpolation-->
+<p>Welcome {{name}}
+   <br> {{4 + 4}}
+    <br> {{"Welcome " + name}}
+    <br> {{name.length}}
+    <br> {{greetUser()}}
+    <br> {{siteUrl}}
+    <br> <br> 
+</p>
+<!--disabled and id-->
+<input type="text" value="Julio" id="myId">
+<input type="text" value="Julio" disabled = "false"> <!-- [disabled] = "false" asi tambien sirve -->
+<!-- adding css class using more classes (ver test.component.css)-->
+<h2 class = "text-success"> Julio</h2>
+<h2 [class] = "successClass"> Julio</h2>
+<h2 class = "text-success" [class] = "successClass"> Julio</h2> <!-- se usa uno o el otro no ambos-->
+<h2 [class.text-danger] = "hasError"> Julio</h2> <!-- dependiendo de si la funcion hasError es true or false, es que coloca o no el color verde especificado en tez.component.css-->
+<h2 [ngClass] = "messageClasses"> Julio</h2> 
+
+<!-- using buttons and events-->
+<button (click) = "onClick()"> Greet</button>
+{{greeting}} <br> <br>
+<input #myInput type="text"> <br> <br> 
+<button (click) = "logMessage(myInput.value)">Log</button>
+
+
+<!-- login -->
+<p> login</p>
+<input [(ngModel)] = "prueba" type="text"> <!-- esto hace que luego en la vista web, cuando escriba en el input se escriba directamente luego al lado gracias a lo de abajo {{prueba}}-->
+{{prueba}}
+
+
+<!-- ngIf, ngSwitch, ngFor-->
+
+<p>ngIf, ngSwitch, ngFor</p>
+
+<h2 *ngIf = "displayName ; else elseBlock"> <!-- lo que hace es manejar si lo que esta dentro de este h2 aparece o no en pantalla-->
+    hola pepsicola
+</h2>
+<ng-template #elseBlock> <!-- en el paso de arriba el verifica si la variable es true or false, luego si es falso revisa si tenemos un else, y como nosotros si lo tenemos busca que es lo que va a agregar que en nuestro caso es el elseBlock que esta en la <ng-template> que se usa en los ngIf -->
+    <h2>
+        Name is hidden
+    </h2>
+</ng-template>
+
+<div *ngIf = "displayNameDos ; then thenBlock; else elseBlockDos"></div>
+<ng-template #thenBlock>
+    <h2>Julio</h2>
+</ng-template>
+
+<ng-template #elseBlockDos>
+    <h2>Hidden</h2>
+</ng-template>    
+<!--ngSwitch-->
+<div [ngSwitch] = "colores">
+    <div *ngSwitchCase= "'red'" class="text-danger"> You picked red color</div>
+    <div *ngSwitchCase= "'blue'" class="text-awesome"> You picked blue color</div>
+    <div *ngSwitchCase= "'green'" class="text-success"> You picked green color</div>
+    <div *ngSwitchDefault>Pick again</div>
+</div>
+<!--ngFor-->
+
+<div *ngFor = "let color of colors; index as i"> <!--el index es para que cuente
+si en vez de poner index ponemos first as f y luego {{f}} esto indicara con un true or false cual es el primero en la lista
+o lo mismo pero con last l
+odd as o para mostrar true los impares
+even as e para mostrar los pares
+-->
+    <h2>{{i}} {{color}}</h2>
+</div>
+<!--Component Interaction-->
+
+<h2>{{"Hello " + parentData}}</h2>
+
+<button (click) = "fireEvent()">Send Event</button>
+
+<!-- Pipes -->
+<p>Pipes</p>
+<h2>{{name}}</h2>
+<h2>{{name | lowercase }}</h2> <!-- esto la coloca en miniscula-->
+<h2>{{name | uppercase }}</h2> <!-- esto la coloca en mayuscula-->
+<h2>{{messages | titlecase }}</h2> <!-- coloca la primera de cada palabra en mayuscula-->
+<h2>{{name | slice : 3 : 4 }}</h2> <!-- empieza a escribir el string desde la posicion 3 y que no incluya la 4 -->
+<h2>{{person | json }}</h2> <!-- literalmente hace un json-->
+<h2>{{5.678 | number:"1.2-3"}}</h2> <!--el primero es para el maximo de enteros el segundo para el minimo de decimales y el ultimo para el maximo de decimales (1.2-3) -->
+<h2>{{5.678 | number:"3.4-5"}}</h2> <!-- igual-->
+<h2>{{5.678 | number:"3.1-2"}}</h2> <!-- igual-->
+
+<h2>{{ 0.25 | percent }}</h2> <!-- literalmente el porcentaje equivalente-->
+
+<h2>{{ 0.25 | currency }}</h2> <!-- literalmente coloca $ al final. Con : "" se cambia el $ al final al correspondiente, por ejemplo GBP. Y con : "code" muestra el GBP en vez del simbolo -->
+
+<h2>{{date}}</h2>
+<h2>{{date | date : "short"}}</h2>
+<h2>{{date | date : "shortDate"}}</h2>
+<h2>{{date | date : "shortTime"}}</h2>
+
+
+
+
+
+
+
+
+
+
+
+
